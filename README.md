@@ -1,5 +1,7 @@
 #Added git/overflow
 [Site Demo](https://includespecial.github.io/RobinW-Langing-Nuxt-Learn/)
+[![Пример сайта]([![image](https://github.com/user-attachments/assets/321ec418-e53a-4101-add1-5ca4108fbe43](https://imgur.com/aLNMBSN))](https://imgur.com/aLNMBSN)
+)
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
