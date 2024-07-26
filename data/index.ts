@@ -45,14 +45,14 @@ export const PhilosophySection =
         Description: "At the core of our beliefs lie aspirations for profound connections with humanity, harmony in the metaphysical realm, and deep engagement with the universe. Our guiding principles—authenticity, creativity, and hospitality—steer us towards realizing these aspirations.",
         Link: "#",
         LinkText: "Learn More",
-        ImageSrc: "assets/images/human_2.jpg",
+        ImageSrc: "/human_2.jpg",
         ImageAltText: "Human",
     }
 export const Hero = {
     title: "I’m Robin Williams. A Product Designer,",
     titleSecond: "based in Italy.",
     description: 'I’m probably the most passionate designer you will ever get to work with. If you have a great project that needs some amazing skills, I’m your guy.',
-    imageSrc: "assets/images/human.jpg",
+    imageSrc: "/human.jpg",
     imageAlt: "Human"
 }
 export const SkillsetBody = {
@@ -84,28 +84,28 @@ export const SkillsetItems = [
 export const ProjectsItems = [
     {
         id: 1,
-        imgSrc: 'assets/images/img_1.png',
+        imgSrc: '/img_1.png',
         imgAlt: 'Restaurant Website Design',
         title: 'Restaurant Website Design',
         description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
     },
     {
         id: 2,
-        imgSrc: 'assets/images/img_2.png',
+        imgSrc: '/img_2.png',
         imgAlt: 'Restaurant Website Design',
         title: 'Restaurant Website Design',
         description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
     },
     {
         id: 3,
-        imgSrc: 'assets/images/img_3.png',
+        imgSrc: '/img_3.png',
         imgAlt: 'Restaurant Website Design',
         title: 'Restaurant Website Design',
         description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
     },
     {
         id: 4,
-        imgSrc: 'assets/images/img_4.png',
+        imgSrc: '/img_4.png',
         imgAlt: 'Restaurant Website Design',
         title: 'Restaurant Website Design',
         description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
