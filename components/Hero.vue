@@ -15,11 +15,11 @@ const hero: HeroData = Hero;
 <template>
   <!-- Hero Section -->
   <section class=" relative flex flex-col md:flex-row justify-between items-center  ">
-    <img
+    <NuxtImg
         :src="hero.imageSrc"
         class="md:w-1/2  h-1/2  object-cover rounded-lg shadow-md"
         :alt="hero.imageAlt"
-    >
+    />
     <div class="md:right-0 md:w-screen px-4">
       <h1 class="font-bold text-4xl md:text-5xl lg:text-6xl text-primary py-4">
         {{ hero.title }}

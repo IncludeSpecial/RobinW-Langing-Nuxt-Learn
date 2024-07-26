@@ -20,9 +20,5 @@ import {Works} from "~/data";
 </template>
 
 <style scoped>
-/* Experience Card Style */
-.work-card {
-  flex: 1 1 30%;
-}
 
 </style>

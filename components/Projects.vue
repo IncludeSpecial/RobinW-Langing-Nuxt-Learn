@@ -16,7 +16,7 @@ import { ProjectsItems } from '~/data';
           class="relative bg-primary text-primary-foreground rounded-lg"
           :class="{ 'md:top-16': index % 2 == 0 }"
       >
-        <img :src="item.imgSrc" :alt="item.imgAlt" class="w-full rounded-t-lg"/>
+        <NuxtImg :src="item.imgSrc" :alt="item.imgAlt" class="w-full rounded-t-lg"/>
         <div class="p-4">
           <h5 class="text-2xl md:text-4xl">{{ item.title }}</h5>
           <p class="text-lg md:text-xl">{{ item.description }}</p>

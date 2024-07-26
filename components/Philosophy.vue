@@ -15,8 +15,8 @@ import {PhilosophySection} from "~/data";
     <div
         class="bg-accent-foreground/10 dark:bg-gray-800 flex justify-center items-center object-cover rounded-lg shadow-md">
       <div class="w-full h-full flex justify-center items-center">
-        <img :alt="PhilosophySection.ImageAltText" :src="PhilosophySection.ImageSrc"
-             class="object-cover w-full h-64 md:h-96 rounded-lg shadow-md">
+        <NuxtImg :alt="PhilosophySection.ImageAltText" :src="PhilosophySection.ImageSrc"
+             class="object-cover w-full h-64 md:h-96 rounded-lg shadow-md"/>
       </div>
     </div>
   </section>
