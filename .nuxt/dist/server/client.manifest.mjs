@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
