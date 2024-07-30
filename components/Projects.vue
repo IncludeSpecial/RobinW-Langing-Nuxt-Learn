@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {ProjectsItems} from '~/data';
 </script>
 
 <template>
   <div class="p-4">
     <div class="mb-8 md:w-1/2">
-      <h5 class="text-xl">MY PROJECTS</h5>
-      <p class="text-4xl md:text-6xl font-bold">
+      <h5 class="text-xl text-gray-400">MY PROJECTS</h5>
+      <p class="text-4xl md:text-6xl  font-semibold">
         Work that I’ve done for the past 8 years
       </p>
     </div>
@@ -35,7 +35,7 @@ import {ProjectsItems} from '~/data';
     </div>
 
     <div class="w-full md:w-5/6 mt-8 flex justify-center md:justify-end">
-      <button class="p-4 border-gray-500 border-2">VIEW ALL PROJECTS</button>
+      <button class="p-4 bg-black hover:bg-primary hover:text-black duration-300 border-gray-500 border-2">VIEW ALL PROJECTS</button>
     </div>
   </div>
 </template>

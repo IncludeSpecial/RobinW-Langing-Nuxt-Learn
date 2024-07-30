@@ -7,10 +7,10 @@ import {SkillsetBody} from "~/data";
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
 
     <div class="flex flex-col justify-start">
-      <h4 class="text-2xl font-bold text-primary/70 mb-4">
+      <h4 class="text-4xl font-bold text-primary mb-4">
         {{ SkillsetBody.title }}
       </h4>
-      <p class="text-xl md:text-4xl font-bold text-gray-700">
+      <p class="text-xl md:text-xl font-light text-gray-400">
         {{ SkillsetBody.description }}
       </p>
     </div>
@@ -21,6 +21,3 @@ import {SkillsetBody} from "~/data";
   </div>
 </template>
 
-<style scoped>
-/* Дополнительные стили можно добавить сюда */
-</style>

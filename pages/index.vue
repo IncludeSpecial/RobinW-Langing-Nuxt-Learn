@@ -1,13 +1,15 @@
 <template>
 
-  <div class="container flex flex-col relative z-10  text-primary gap-4 " >
+  <div class=" flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 " >
 
-        <nav-bar/>
+        <nav-bar />
     <hero/>
     <work/>
     <philosophy/>
     <skillset/>
+    <companySlider/>
     <projects/>
+    <Instagram/>
 
   </div>
 </template>
@@ -18,6 +20,7 @@
 </style>
 
 <script setup lang="ts">
+
 
 
 useSeoMeta({

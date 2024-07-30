@@ -4,9 +4,7 @@ import type { Defu } from 'defu'
 
 
 declare const inlineConfig = {
-  "nuxt": {
-    "buildId": "56964318-b317-480e-96bf-54cf1d3783d1"
-  },
+  "nuxt": {},
   "icon": {
     "provider": "server",
     "class": "",
@@ -35,6 +33,7 @@ declare const inlineConfig = {
       "bxs",
       "bytesize",
       "carbon",
+      "catppuccin",
       "cbi",
       "charm",
       "ci",
@@ -102,6 +101,7 @@ declare const inlineConfig = {
       "heroicons",
       "heroicons-outline",
       "heroicons-solid",
+      "hugeicons",
       "humbleicons",
       "ic",
       "icomoon-free",
@@ -160,6 +160,7 @@ declare const inlineConfig = {
       "radix-icons",
       "raphael",
       "ri",
+      "rivet-icons",
       "si-glyph",
       "simple-icons",
       "simple-line-icons",
@@ -188,6 +189,7 @@ declare const inlineConfig = {
       "vs",
       "vscode-icons",
       "websymbol",
+      "weui",
       "whh",
       "wi",
       "wpf",

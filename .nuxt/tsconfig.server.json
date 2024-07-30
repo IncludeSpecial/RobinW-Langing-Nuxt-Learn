@@ -2,6 +2,7 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noEmit": true,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -49,6 +50,9 @@
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
+      "@nuxt/devtools": [
+        "../node_modules/@nuxt/devtools"
+      ],
       "@vue/runtime-core": [
         "../node_modules/@vue/runtime-core"
       ],
@@ -57,6 +61,9 @@
       ],
       "@vue/runtime-dom": [
         "../node_modules/@vue/runtime-dom"
+      ],
+      "unplugin-vue-router/client": [
+        "../node_modules/unplugin-vue-router/client"
       ],
       "@nuxt/schema": [
         "../node_modules/@nuxt/schema"
@@ -97,10 +104,18 @@
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
       ],
+      "#vue-router": [
+        "./vue-router"
+      ],
       "#nuxt-icon-server-bundle": [
         "./nuxt-icon-server-bundle"
       ]
-    }
+    },
+    "lib": [
+      "esnext",
+      "webworker",
+      "dom.iterable"
+    ]
   },
   "include": [
     "./types/nitro-nuxt.d.ts",
