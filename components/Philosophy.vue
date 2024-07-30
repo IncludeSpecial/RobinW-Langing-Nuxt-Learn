@@ -7,7 +7,7 @@ import {PhilosophySection} from "~/data";
 
   <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <div class="bg-accent-foreground/10 dark:bg-gray-800 p-6 flex flex-col justify-center rounded-lg shadow-md">
+    <div class="bg-accent-foreground/10 dark:bg-gray-800 p-4 flex flex-col justify-center rounded-lg shadow-md">
       <h2 class="text-2xl text-primary dark:text-primary font-bold mb-4">
         {{ PhilosophySection.PhilosophyTitle }}
       </h2>

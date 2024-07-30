@@ -1,6 +1,6 @@
 <template>
 
-  <div class=" flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 " >
+  <div class=" container flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 " >
 
         <nav-bar />
     <hero/>
