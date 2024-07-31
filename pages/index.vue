@@ -24,8 +24,6 @@
 <script setup lang="ts">
 
 
-import PhotographySection from "~/components/PhotographySection.vue";
-
 useSeoMeta({
       title: "Switty | Портфолио",
       description: "Добро пожаловать в портфолио Switty, где представлены мои лучшие проекты и достижения.",
