@@ -2,30 +2,12 @@ import process from 'node:process';globalThis._importMeta_=globalThis._importMet
 import { eventHandler, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getQuery, createError, appendResponseHeader, getResponseStatusText } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/h3/dist/index.mjs';
 import { stringify, uneval } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/devalue/index.js';
 import { joinRelativeURL, joinURL, withoutTrailingSlash } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/vue/server-renderer/index.mjs';
 import { propsToString, renderSSRHead } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/@unhead/ssr/dist/index.mjs';
 import { u as useRuntimeConfig, a as useNitroApp, b as useStorage, g as getRouteRules } from '../runtime.mjs';
 import { createServerHead as createServerHead$1, CapoPlugin } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unhead/dist/index.mjs';
 import { version, unref } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/vue/index.mjs';
 import { defineHeadPlugin } from 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/@unhead/shared/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/ofetch/dist/node.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/destr/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unenv/runtime/fetch/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/hookable/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/klona/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/scule/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/defu/dist/defu.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/ohash/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unstorage/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unstorage/drivers/fs.mjs';
-import 'file:///C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/nuxt/dist/core/runtime/nitro/cache-driver.js';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unstorage/drivers/fs-lite.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/radix3/dist/index.mjs';
-import 'node:fs';
-import 'node:url';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/pathe/dist/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/@iconify/utils/lib/index.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/unenv/runtime/npm/consola.mjs';
-import 'file://C:/Users/Switty/Documents/GitHub/RobinW-Langing-Nuxt-Learn/node_modules/ipx/dist/index.mjs';
 
 function defineRenderHandler(handler) {
   const runtimeConfig = useRuntimeConfig();
@@ -58,6 +40,9 @@ function defineRenderHandler(handler) {
   });
 }
 
+function baseURL() {
+  return useRuntimeConfig().app.baseURL;
+}
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -143,6 +128,35 @@ const componentIslands = false;
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
 const getClientManifest = () => import('../build/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getEntryIds = () => getClientManifest().then((r) => Object.values(r).filter(
+  (r2) => (
+    // @ts-expect-error internal key set by CSS inlining configuration
+    r2._globalCSS
+  )
+).map((r2) => r2.src));
+const getServerEntry = () => import('../build/server.mjs').then((r) => r.default || r);
+const getSSRStyles = lazyCachedFunction(() => import('../build/styles.mjs').then((r) => r.default || r));
+const getSSRRenderer = lazyCachedFunction(async () => {
+  const manifest = await getClientManifest();
+  if (!manifest) {
+    throw new Error("client.manifest is not available");
+  }
+  const createSSRApp = await getServerEntry();
+  if (!createSSRApp) {
+    throw new Error("Server bundle is not available");
+  }
+  const options = {
+    manifest,
+    renderToString: renderToString$1,
+    buildAssetsURL
+  };
+  const renderer = createRenderer(createSSRApp, options);
+  async function renderToString$1(input, context) {
+    const html = await renderToString(input, context);
+    return APP_ROOT_OPEN_TAG + html + APP_ROOT_CLOSE_TAG;
+  }
+  return renderer;
+});
 const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   const spaTemplate = await import('../virtual/_virtual_spa-template.mjs').then((r) => r.template).catch(() => "").then((r) => APP_ROOT_OPEN_TAG + r + APP_ROOT_CLOSE_TAG);
@@ -180,6 +194,7 @@ const APP_TELEPORT_CLOSE_TAG = HAS_APP_TELEPORTS ? `</${appTeleportTag}>` : "";
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 const PAYLOAD_URL_RE = /\/_payload.json(\?.*)?$/ ;
+const PRERENDER_NO_SSR_ROUTES = /* @__PURE__ */ new Set(["/index.html", "/200.html", "/404.html"]);
 const renderer = defineRenderHandler(async (event) => {
   const nitroApp = useNitroApp();
   const ssrError = event.path.startsWith("/__nuxt_error") ? getQuery(event) : null;
@@ -216,7 +231,7 @@ const renderer = defineRenderHandler(async (event) => {
     url,
     event,
     runtimeConfig: useRuntimeConfig(event),
-    noSSR: !!true,
+    noSSR: event.context.nuxt?.noSSR || routeOptions.ssr === false && !isRenderingIsland || (PRERENDER_NO_SSR_ROUTES.has(url) ),
     head,
     error: !!ssrError,
     nuxt: void 0,
@@ -231,7 +246,12 @@ const renderer = defineRenderHandler(async (event) => {
   {
     ssrContext.payload.prerenderedAt = Date.now();
   }
-  const renderer = await getSPARenderer() ;
+  const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
+  {
+    for (const id of await getEntryIds()) {
+      ssrContext.modules.add(id);
+    }
+  }
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
       return {};
@@ -258,7 +278,7 @@ const renderer = defineRenderHandler(async (event) => {
     appendResponseHeader(event, "x-nitro-prerender", joinURL(url, "_payload.json" ));
     await payloadCache.setItem(withoutTrailingSlash(url), renderPayloadResponse(ssrContext));
   }
-  const inlinedStyles = [];
+  const inlinedStyles = await renderInlineStyles(ssrContext.modules ?? []) ;
   const NO_SCRIPTS = routeOptions.experimentalNoScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
   if (_PAYLOAD_EXTRACTION && !NO_SCRIPTS && !isRenderingIsland) {
@@ -360,6 +380,18 @@ function joinAttrs(chunks) {
 function renderHTMLDocument(html) {
   return `<!DOCTYPE html><html${joinAttrs(html.htmlAttrs)}><head>${joinTags(html.head)}</head><body${joinAttrs(html.bodyAttrs)}>${joinTags(html.bodyPrepend)}${joinTags(html.body)}${joinTags(html.bodyAppend)}</body></html>`;
 }
+async function renderInlineStyles(usedModules) {
+  const styleMap = await getSSRStyles();
+  const inlinedStyles = /* @__PURE__ */ new Set();
+  for (const mod of usedModules) {
+    if (mod in styleMap) {
+      for (const style of await styleMap[mod]()) {
+        inlinedStyles.add(style);
+      }
+    }
+  }
+  return Array.from(inlinedStyles).map((style) => ({ innerHTML: style }));
+}
 function renderPayloadResponse(ssrContext) {
   return {
     body: stringify(splitPayload(ssrContext).payload, ssrContext._payloadReducers) ,
@@ -377,7 +409,7 @@ function renderPayloadJsonScript(opts) {
     "type": "application/json",
     "id": opts.id,
     "innerHTML": contents,
-    "data-ssr": !(true)
+    "data-ssr": !(opts.ssrContext.noSSR)
   };
   if (opts.src) {
     payload["data-src"] = opts.src;
@@ -397,5 +429,10 @@ function splitPayload(ssrContext) {
   };
 }
 
-export { renderer as default };
+const renderer$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: renderer
+});
+
+export { baseURL as b, renderer$1 as r };
 //# sourceMappingURL=renderer.mjs.map

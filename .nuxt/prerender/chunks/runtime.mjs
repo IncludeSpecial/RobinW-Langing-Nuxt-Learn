@@ -260,8 +260,8 @@ const appConfig = defuFn(inlineAppConfig);
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/RobinW-Langing-Nuxt-Learn/",
-    "buildId": "92ab4e0a-3175-4f2f-bd2e-db2b0d3190bf",
+    "baseURL": "/",
+    "buildId": "0bbdc018-f245-4b5d-b696-aa1d23bafdfd",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -1012,7 +1012,7 @@ const _xbYxE1 = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_CC7KUy = () => import('./_/renderer.mjs');
+const _lazy_CC7KUy = () => import('./_/renderer.mjs').then(function (n) { return n.r; });
 
 const handlers = [
   { route: '', handler: _f4b49z, lazy: false, middleware: true, method: undefined },

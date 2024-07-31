@@ -99,7 +99,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/92ab4e0a-3175-4f2f-bd2e-db2b0d3190bf.json"
+        "./manifest/meta/dev"
       ],
       "#build": [
         "."
@@ -147,6 +147,7 @@
     "../node_modules/shadcn-nuxt/runtime",
     "../node_modules/@nuxt/icon/runtime",
     "../node_modules/@nuxt/image/runtime",
+    "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     ".."
   ],
@@ -158,6 +159,7 @@
     "../node_modules/shadcn-nuxt/runtime/server",
     "../node_modules/@nuxt/icon/runtime/server",
     "../node_modules/@nuxt/image/runtime/server",
+    "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../.output"
   ]
