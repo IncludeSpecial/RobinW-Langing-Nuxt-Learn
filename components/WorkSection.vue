@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import ExperienceCard from "~/components/ExperienceCard.vue";
+import ExperienceCard from "~/components/ExperienceSection.vue";
 import {Works} from "~/data";
 </script>
 

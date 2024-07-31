@@ -16,11 +16,11 @@ import {Logo, navItems} from "~/data";
     </a>
 
     <div class="  justify-end gap-4  md:flex hidden ">
-      <a v-for="item in navItems"
+      <Button variant="link" v-for="item in navItems"
          :href=item.link
-         class="nav-link bg-accent p-2 rounded hover:bg-primary duration-300 hover:text-accent">
+      >
         {{ item.name }}
-      </a>
+      </Button>
     </div>
 
   </nav>

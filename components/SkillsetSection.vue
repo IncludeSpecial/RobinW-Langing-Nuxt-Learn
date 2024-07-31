@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import {SkillsetBody} from "~/data";
+import {CompanyBodyItems} from "~/data";
 </script>
 
 <template>
@@ -8,10 +8,10 @@ import {SkillsetBody} from "~/data";
 
     <div class="flex flex-col justify-start">
       <h4 class="text-4xl font-bold text-primary mb-4">
-        {{ SkillsetBody.title }}
+        {{ CompanyBodyItems.title }}
       </h4>
       <p class="text-xl md:text-xl font-light text-gray-400">
-        {{ SkillsetBody.description }}
+        {{ CompanyBodyItems.description }}
       </p>
     </div>
 

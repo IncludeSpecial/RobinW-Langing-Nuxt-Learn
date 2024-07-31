@@ -8,7 +8,7 @@ import {CardItems} from "~/data";
       v-for="card in CardItems"
       class="work-card bg-accent-foreground/10 dark:bg-gray-800 rounded-lg shadow-md p-3 flex flex-col justify-start">
 
-    <span class="text-5xl md:text-9xl text-gray-600">
+    <span class="text-4xl md:text-9xl text-gray-600">
       {{ card.id }}
     </span>
 

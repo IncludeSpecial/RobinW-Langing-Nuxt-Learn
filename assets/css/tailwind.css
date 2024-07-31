@@ -81,6 +81,17 @@
     transition: transform 0.3s;
   }
 
+  .image-hover{
+    transform: scale(1);
+    transition: all 0.3s;
+
+  }
+  .image-hover:hover{
+    transform: scale(2);
+    margin: 0 1.5rem;
+
+
+  }
   .item-link:hover {
     transform: translateY(-6px);
     filter: drop-shadow(0px 2px 4px);

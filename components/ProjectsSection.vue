@@ -18,12 +18,12 @@ import {ProjectsItems} from '~/data';
           :class="{ 'md:top-16': index % 2 == 0 }"
           class="relative bg-primary text-primary-foreground rounded-lg">
 
-        <NuxtImg :alt="item.imgAlt"
+        <LazyNuxtImg :alt="item.imgAlt"
                  :src="item.imgSrc"
                  class="w-full rounded-t-lg"/>
 
         <div class="p-4">
-          <h5 class="text-2xl md:text-4xl">
+          <h5 class="lg:text-4xl text-2xl font-semibold md:text-4xl">
             {{ item.title }}
           </h5>
           <p class="text-lg md:text-xl">
@@ -35,7 +35,7 @@ import {ProjectsItems} from '~/data';
     </div>
 
     <div class="w-full md:w-5/6 mt-8 flex justify-center md:justify-end">
-      <button class="p-4 bg-black hover:bg-primary hover:text-black duration-300 border-gray-500 border-2">VIEW ALL PROJECTS</button>
+      <Button variant="default">VIEW ALL PROJECTS</Button>
     </div>
   </div>
 </template>

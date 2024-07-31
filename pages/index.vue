@@ -1,15 +1,17 @@
 <template>
 
-  <div class=" container flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 " >
+  <div class=" container flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 pb-4" >
 
-        <nav-bar />
-    <hero/>
-    <work/>
-    <philosophy/>
-    <skillset/>
-    <companySlider/>
-    <projects/>
-    <Instagram/>
+    <NavBarSection/>
+    <HeroSection/>
+    <WorkSection/>
+    <PhilosophySection/>
+    <SkillsetSection/>
+    <CompanySection/>
+    <ProjectsSection/>
+    <InstagramSection/>
+    <TestimonialSection/>
+    <PhotographySection/>
 
   </div>
 </template>
@@ -22,6 +24,7 @@
 <script setup lang="ts">
 
 
+import PhotographySection from "~/components/PhotographySection.vue";
 
 useSeoMeta({
       title: "Switty | Портфолио",
