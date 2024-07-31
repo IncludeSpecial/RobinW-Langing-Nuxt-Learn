@@ -1,0 +1,9 @@
+grep -rnwl "<link rel=\"prefetch\"" .output/public | xargs sed -i 's$<link rel="prefetch" href="[^"]*\.\(jpg\|png\|webm\|jpeg\|ttg\|svg\|gif\)">$$g'
+cd .output/public or .output/public/RobinW-Langing-Nuxt-Learn
+touch .nojekyll
+git init
+git add .
+git remote add origin "github_repository_url.git"
+git checkout -b "master"
+git commit -a -m "First commit"
+git push -u origin "master"

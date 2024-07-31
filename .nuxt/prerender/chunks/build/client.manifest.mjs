@@ -1,4 +1,4 @@
-{
+const client_manifest = {
   "_BBPZISAx.js": {
     "resourceType": "script",
     "module": true,
@@ -117,4 +117,7 @@
     "prefetch": true,
     "preload": true
   }
-}
+};
+
+export { client_manifest as default };
+//# sourceMappingURL=client.manifest.mjs.map
