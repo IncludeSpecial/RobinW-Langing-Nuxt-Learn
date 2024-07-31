@@ -1,9 +1,9 @@
-name: Deploy Nuxt 3 App
+name: Deploy Nuxt 3 App to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -22,19 +22,10 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build
+        run: npm run generate
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan ${{ secrets.SERVER }} >> ~/.ssh/known_hosts
-
-      - name: Deploy to server
-        env:
-          SERVER: ${{ secrets.SERVER }}
-          USER: ${{ secrets.USER }}
-          DESTINATION: ${{ secrets.DESTINATION }}
-        run: |
-          rsync -avz --delete-after --exclude='.git' --exclude='node_modules' ./ $USER@$SERVER:$DESTINATION
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
