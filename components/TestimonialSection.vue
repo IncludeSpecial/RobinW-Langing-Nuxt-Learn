@@ -21,6 +21,8 @@ import {TestimonialItems} from "~/data";
           <NuxtImg
               :src="item.ImageSrc"
               :alt="item.ImageAltText"
+              format="webp"
+              quality="80"
               class="object-cover  rounded-t-lg w-full h-48 md:h-64 lg:h-96 "
           />
           <div class="gap-8 p-12 justify-between flex flex-col">

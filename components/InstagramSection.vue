@@ -8,6 +8,8 @@ import { InstagramItems } from "~/data";
       <NuxtImg
           :alt="InstagramItems.ImageAltText"
           :src="InstagramItems.ImageSrc"
+          format="webp"
+          quality="80"
           class="object-cover w-full h-64 md:h-96 rounded-lg"
       />
     </div>

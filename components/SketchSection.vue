@@ -13,6 +13,8 @@
         src="https://cdn.dribbble.com/uploads/9254/original/75295792f94f69858e1708053300087b.png"
         height="400"
         width="600"
+        format="webp"
+        quality="80"
         class="rounded-lg shadow-lg"
     />
   </div>

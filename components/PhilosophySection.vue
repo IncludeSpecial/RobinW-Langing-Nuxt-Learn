@@ -22,6 +22,8 @@ import {PhilosophyItems} from "~/data";
       <NuxtImg
           :alt="PhilosophyItems.ImageAltText"
           :src="PhilosophyItems.ImageSrc"
+          format="webp"
+          quality="80"
           class="object-cover w-full h-64 md:h-96 rounded-lg"
       />
     </div>

@@ -74,7 +74,10 @@ const closeModal = () => {
                 class="absolute top-2 right-2 px-2 items-center justify-center rounded-full bg-primary text-center text-gray-700 text-4xl hover:text-gray-900">
           &times;
         </button>
-        <NuxtImg :src="modalImageSrc" class="max-w-full max-h-screen rounded-lg"/>
+        <NuxtImg :src="modalImageSrc"
+                 format="webp"
+                 quality="80"
+                 class="max-w-full max-h-screen rounded-lg"/>
       </div>
     </div>
   </section>

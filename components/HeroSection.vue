@@ -9,6 +9,8 @@ import {HeroItems} from "~/data";
     <NuxtImg
         :alt="HeroItems.imageAlt"
         :src="HeroItems.imageSrc"
+        format="webp"
+        quality="80"
         class="md:w-1/2  h-1/2  object-cover rounded-lg shadow-md"/>
 
     <div class="md:right-0 md:w-screen px-4">

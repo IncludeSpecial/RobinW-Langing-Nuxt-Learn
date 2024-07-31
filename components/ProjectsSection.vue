@@ -20,6 +20,8 @@ import {ProjectsItems} from '~/data';
 
         <NuxtImg :alt="item.imgAlt"
                  :src="item.imgSrc"
+                 format="webp"
+                 quality="80"
                  class="w-full rounded-t-lg"/>
 
         <div class="p-4">
