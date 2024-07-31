@@ -1,31 +1,97 @@
-name: Deploy Nuxt 3 App to GitHub Pages
-
-on:
-  push:
-    branches:
-      - master
-
+name: "Build and deploy Nuxt SSR with PM2"
+on: [push]
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
+  build:
+    name: "Build Nuxt Application"
+    runs-on: [self-hosted, ARM64] # you can also use buildjet.com
+    environment:
+      name: "Production"
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      # We need to adjust permissions on the apt cache folder to restore the cache
+      - name: "Fix cache permissions"
+      run: |
+        sudo chmod aoug+rw -R /var/cache/apt
+      - name: "Restore apt package cache"
+      uses: actions/cache@v3
+      with:
+        path: |
+          /var/cache/apt/archives/**.deb
+          !/var/cache/apt/archives/partial
+          !/var/cache/apt/archives/lock
+        key: ${{ runner.os }}-apt1-${{ hashFiles('**/lock-requirements-apt.txt') }}
+        restore-keys: ${{ runner.os }}-apt1-
+
+      - name: "Update Apt database"
+      run: sudo apt-get update
+
+      - name: "Setup build tools for `node-canvas`"
+      run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev
+
+      - name: "Install Node.js"
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+      - name: "Install and setup pnpm"
+        run: |
+          npm install -g pnpm
+          pnpm config set store-dir ~/.pnpm-store
+      - name: "Restore pnpm cache"
+      uses: actions/cache@v3
+      with:
+        path: |
+          **/node_modules/.pnpm/canvas@2.11.0
+          ~/.pnpm-store
+          ~/.npm
+        key: ${{ runner.os }}-pnpm1-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: ${{ runner.os }}-pnpm1-
+
+      - name: "Install dependencies"
+        run: pnpm install --shamefully-hoist
+
+      - name: "Run build task"
+        run: pnpm run build --if-present
+
+      # rsync only required folders from the build
+      - name: "Deploy to Server"
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: .output fonts src
+          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+          REMOTE_USER: ${{ vars.REMOTE_USER }}
+          TARGET: ${{ vars.REMOTE_TARGET }}
+
+  followup:
+    name: "Follow-up Tasks (PM2, CloudFront)"
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment:
+      name: "Production"
+    steps:
+      - name: "Restart PM2 task"
+        uses: appleboy/ssh-action@v0.1.7
         with:
-          node-version: '20' # Используйте версию Node.js, совместимую с вашим проектом
+          host: ${{ env.REMOTE_HOST }}
+          username: ${{ env.REMOTE_USER }}
+          key: ${{ env.SSH_PRIVATE_KEY }}
+          script: "source ~/.nvm/nvm.sh && pm2 restart ${{ vars.PM2_NAME }}"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+          REMOTE_USER: ${{ vars.REMOTE_USER }}
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run generate
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - name: "Invalidate AWS CloudFront"
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ vars.DISTRIBUTION }}
+          PATHS: ${{ vars.INVALIDATE_PATHS }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+          REMOTE_USER: ${{ vars.REMOTE_USER }}
