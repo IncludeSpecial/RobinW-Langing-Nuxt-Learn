@@ -1,9 +1,7 @@
 import {resolve} from "node:dns";
 
 export default defineNuxtConfig({
-  app: {
-    baseURL: '/RobinW-Langing-Nuxt-Learn/'
-  },
+
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', "@nuxt/image"],
   devtools: false,
   shadcn: {
