@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  target: 'static',
+
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', "@nuxt/image"],
   devtools: false,
   shadcn: {
