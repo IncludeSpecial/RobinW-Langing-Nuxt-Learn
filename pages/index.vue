@@ -10,7 +10,7 @@
     <CompanySection/>
     <ProjectsSection/>
     <InstagramSection/>
-    <TestimonialSection/>
+    <Testimonial/>
     <PhotographySection/>
 
   </div>
@@ -22,7 +22,6 @@
 </style>
 
 <script setup lang="ts">
-
 
 useSeoMeta({
       title: "Switty | Портфолио",
