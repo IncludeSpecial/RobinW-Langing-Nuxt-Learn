@@ -5,7 +5,7 @@ import { InstagramItems } from "~/data";
 <template>
   <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="bg-accent-foreground/10 dark:bg-gray-800 flex justify-center items-center rounded-lg shadow-md">
-      <LazyNuxtImg
+      <NuxtImg
           :alt="InstagramItems.ImageAltText"
           :src="InstagramItems.ImageSrc"
           class="object-cover w-full h-64 md:h-96 rounded-lg"

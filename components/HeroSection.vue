@@ -6,7 +6,7 @@ import {HeroItems} from "~/data";
 
   <section class=" relative flex flex-col md:flex-row justify-between items-center  ">
 
-    <LazyNuxtImg
+    <NuxtImg
         :alt="HeroItems.imageAlt"
         :src="HeroItems.imageSrc"
         class="md:w-1/2  h-1/2  object-cover rounded-lg shadow-md"/>

@@ -18,7 +18,7 @@ import {ProjectsItems} from '~/data';
           :class="{ 'md:top-16': index % 2 == 0 }"
           class="relative bg-primary text-primary-foreground rounded-lg">
 
-        <LazyNuxtImg :alt="item.imgAlt"
+        <NuxtImg :alt="item.imgAlt"
                  :src="item.imgSrc"
                  class="w-full rounded-t-lg"/>
 

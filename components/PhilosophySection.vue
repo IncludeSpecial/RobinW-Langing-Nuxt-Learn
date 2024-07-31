@@ -19,7 +19,7 @@ import {PhilosophyItems} from "~/data";
     </div>
 
     <div class="bg-accent-foreground/10 dark:bg-gray-800 flex justify-center items-center rounded-lg shadow-md">
-      <LazyNuxtImg
+      <NuxtImg
           :alt="PhilosophyItems.ImageAltText"
           :src="PhilosophyItems.ImageSrc"
           class="object-cover w-full h-64 md:h-96 rounded-lg"
