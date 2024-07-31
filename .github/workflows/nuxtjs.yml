@@ -1,97 +1,35 @@
-name: "Build and deploy Nuxt SSR with PM2"
-on: [push]
+name: Deploy to GitHub pages
+on:
+  push:
+    branches: [nuxt]
+env:
+  BUILD_FOLDER: .output/public # or .output/public/RobinW-Langing-Nuxt-Learn/
 jobs:
   build:
-    name: "Build Nuxt Application"
-    runs-on: [self-hosted, ARM64] # you can also use buildjet.com
-    environment:
-      name: "Production"
-    steps:
-      - uses: actions/checkout@v3
-
-      # We need to adjust permissions on the apt cache folder to restore the cache
-      - name: "Fix cache permissions"
-      run: |
-        sudo chmod aoug+rw -R /var/cache/apt
-      - name: "Restore apt package cache"
-      uses: actions/cache@v3
-      with:
-        path: |
-          /var/cache/apt/archives/**.deb
-          !/var/cache/apt/archives/partial
-          !/var/cache/apt/archives/lock
-        key: ${{ runner.os }}-apt1-${{ hashFiles('**/lock-requirements-apt.txt') }}
-        restore-keys: ${{ runner.os }}-apt1-
-
-      - name: "Update Apt database"
-      run: sudo apt-get update
-
-      - name: "Setup build tools for `node-canvas`"
-      run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev
-
-      - name: "Install Node.js"
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-
-      - name: "Install and setup pnpm"
-        run: |
-          npm install -g pnpm
-          pnpm config set store-dir ~/.pnpm-store
-      - name: "Restore pnpm cache"
-      uses: actions/cache@v3
-      with:
-        path: |
-          **/node_modules/.pnpm/canvas@2.11.0
-          ~/.pnpm-store
-          ~/.npm
-        key: ${{ runner.os }}-pnpm1-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: ${{ runner.os }}-pnpm1-
-
-      - name: "Install dependencies"
-        run: pnpm install --shamefully-hoist
-
-      - name: "Run build task"
-        run: pnpm run build --if-present
-
-      # rsync only required folders from the build
-      - name: "Deploy to Server"
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rlgoDzvc -i --delete"
-          SOURCE: .output fonts src
-          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
-          REMOTE_USER: ${{ vars.REMOTE_USER }}
-          TARGET: ${{ vars.REMOTE_TARGET }}
-
-  followup:
-    name: "Follow-up Tasks (PM2, CloudFront)"
     runs-on: ubuntu-latest
-    needs: [build]
-    environment:
-      name: "Production"
     steps:
-      - name: "Restart PM2 task"
-        uses: appleboy/ssh-action@v0.1.7
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generate static Nuxt 3 files
+        uses: actions/setup-node@v3
         with:
-          host: ${{ env.REMOTE_HOST }}
-          username: ${{ env.REMOTE_USER }}
-          key: ${{ env.SSH_PRIVATE_KEY }}
-          script: "source ~/.nvm/nvm.sh && pm2 restart ${{ vars.PM2_NAME }}"
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
-          REMOTE_USER: ${{ vars.REMOTE_USER }}
+          node-version: "16"
+          cache: 'yarn'
 
-      - name: "Invalidate AWS CloudFront"
-        uses: chetan/invalidate-cloudfront-action@v2
-        env:
-          DISTRIBUTION: ${{ vars.DISTRIBUTION }}
-          PATHS: ${{ vars.INVALIDATE_PATHS }}
-          AWS_REGION: ${{ vars.AWS_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
-          REMOTE_USER: ${{ vars.REMOTE_USER }}
+      - run: |
+          yarn install
+          yarn generate
+      - name: Init new repo in $BUILD_FOLDER and commit generated files
+        run: |
+          grep -rnwl "<link rel=\"prefetch\"" $BUILD_FOLDER | xargs sed -i 's$<link rel="prefetch" href="[^"]*\.\(jpg\|png\|webm\|jpeg\|ttg\|svg\|gif\)">$$g'
+          cd $BUILD_FOLDER
+          touch .nojekyll
+          git init
+          git add -A
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m 'deploy'
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ${{env.BUILD_FOLDER}}
