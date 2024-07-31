@@ -19,9 +19,12 @@ import {TestimonialItems} from "~/data";
       <div v-for="item in TestimonialItems" class="space-y-8">
         <div class="flex flex-col   rounded-lg border list-inside border-gray-300">
 <!--          :src="item.ImageSrc"    -->
-          <NuxtImg
+          <nuxt-img
               :src="item.ImageSrc"
               :alt="item.ImageAltText"
+              format="webp"
+              quality="80"
+              loading="lazy"
               class="object-cover  rounded-t-lg w-full h-48 md:h-64 lg:h-96 "
           />
           <div class="gap-8 p-12 justify-between flex flex-col">

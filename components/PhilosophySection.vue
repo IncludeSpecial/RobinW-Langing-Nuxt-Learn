@@ -19,7 +19,7 @@ import {PhilosophyItems} from "~/data";
     </div>
 
     <div class="bg-accent-foreground/10 dark:bg-gray-800 flex justify-center items-center rounded-lg shadow-md">
-      <NuxtImg
+      <nuxt-img
           :alt="PhilosophyItems.ImageAltText"
           :src="PhilosophyItems.ImageSrc"
           format="webp"

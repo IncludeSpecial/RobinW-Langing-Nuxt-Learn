@@ -55,12 +55,12 @@ const closeModal = () => {
 
     <div
         class="flex no-scrollbar gap-4 scroll-container rounded-lg overflow-hidden touch-manipulation overflow-x-auto overflow-y-hidden whitespace-nowrap">
-      <LazyNuxtImg
+      <nuxt-img
           v-for="(image, index) in CityItems.find(city => city.city === selectedCity)?.images || []"
           :key="index"
           :src="image.src"
           :alt="image.alt"
-
+          loading="lazy"
           height="720"
           class="h-96 w-72 object-cover cursor-pointer"
           @click="openModal(image.src)"
@@ -74,9 +74,10 @@ const closeModal = () => {
                 class="absolute top-2 right-2 px-2 items-center justify-center rounded-full bg-primary text-center text-gray-700 text-4xl hover:text-gray-900">
           &times;
         </button>
-        <NuxtImg :src="modalImageSrc"
+        <nuxt-img :src="modalImageSrc"
                  format="webp"
                  quality="80"
+                  loading="lazy"
                  class="max-w-full max-h-screen rounded-lg"/>
       </div>
     </div>

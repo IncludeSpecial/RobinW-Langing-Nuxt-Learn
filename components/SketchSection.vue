@@ -9,7 +9,7 @@
       <p class="mb-4 text-gray-400">Each sketch is made with love and care. Check out my works. Likes and comments are welcome.</p>
       <Button variant="link" size="lg"><Icon name="arcticons:linkhub" class="mr-2"/> Follow me on Dribbble</Button>
     </div>
-    <NuxtImg
+    <nuxt-img
         src="https://cdn.dribbble.com/uploads/9254/original/75295792f94f69858e1708053300087b.png"
         height="400"
         width="600"
