@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20' # Используйте версию Node.js, совместимую с вашим проектом
+          node-version: '16' # Используйте версию Node.js, совместимую с вашим проектом
 
       - name: Install dependencies
         run: npm install
@@ -24,15 +24,17 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan ${{ secrets.SERVER }} >> ~/.ssh/known_hosts
+
       - name: Deploy to server
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER: ${{ secrets.SERVER }}
           USER: ${{ secrets.USER }}
           DESTINATION: ${{ secrets.DESTINATION }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no $USER@$SERVER "mkdir -p $DESTINATION"
           rsync -avz --delete-after --exclude='.git' --exclude='node_modules' ./ $USER@$SERVER:$DESTINATION
