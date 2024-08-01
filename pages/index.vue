@@ -1,17 +1,22 @@
-<template>
+<template class="">
 
-  <div class=" container flex flex-col px-4 relative z-10 mx-auto text-primary gap-4 pb-4" >
+  <div class="   bg-black flex flex-col  relative z-10 mx-auto text-primary gap-4" >
 
     <NavBarSection/>
-    <HeroSection/>
-    <WorkSection/>
-    <PhilosophySection/>
-    <SkillsetSection/>
-    <CompanySection/>
-    <ProjectsSection/>
-    <InstagramSection/>
-    <Testimonial/>
-    <PhotographySection/>
+    <div class="container flex flex-col gap-4">
+      <HeroSection/>
+      <WorkSection/>
+      <PhilosophySection/>
+      <SkillsetSection/>
+      <CompanySection/>
+      <ProjectsSection/>
+      <InstagramSection/>
+      <Testimonial/>
+      <PhotographySection/>
+      <ContactSection/>
+    </div>
+
+    <FooterSection/>
 
   </div>
 </template>
@@ -22,6 +27,8 @@
 </style>
 
 <script setup lang="ts">
+
+import FooterSection from "~/components/FooterSection.vue";
 
 useSeoMeta({
       title: "Switty | Портфолио",

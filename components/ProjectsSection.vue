@@ -3,7 +3,7 @@ import {ProjectsItems} from '~/data';
 </script>
 
 <template>
-  <div class="p-4">
+  <div class="4">
     <div class="mb-8 md:w-1/2">
       <h5 class="text-xl text-gray-400">MY PROJECTS</h5>
       <p class="text-4xl md:text-6xl  font-semibold">

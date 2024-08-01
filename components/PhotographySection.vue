@@ -30,7 +30,7 @@ const closeModal = () => {
 </script>
 
 <template>
-  <section class="text-white">
+  <section class="text-white mx-auto">
     <div class="flex flex-col mb-8">
       <h2 class="text-4xl font-bold mb-4">Photography</h2>
       <p class="text-gray-400">

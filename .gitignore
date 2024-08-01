@@ -3,6 +3,8 @@
 .data
 .nitro
 .cache
+.output
+dist
 
 
 # Node dependencies

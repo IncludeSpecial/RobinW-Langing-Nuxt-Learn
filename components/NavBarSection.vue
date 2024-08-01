@@ -7,7 +7,7 @@ import {Logo, navItems} from "~/data";
 <template>
 
   <nav
-      class=" container flex justify-center md:justify-between  items-center py-4 px-12 sticky
+      class="  flex justify-center md:justify-between  items-center py-4 px-12 sticky
       top-0 z-10 bg-black/20 backdrop-blur-lg border border-gray-800 rounded-md">
 
     <a :href=Logo[0].link
