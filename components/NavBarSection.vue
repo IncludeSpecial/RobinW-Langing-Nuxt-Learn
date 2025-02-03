@@ -1,27 +1,29 @@
 <script setup lang="ts">
-
-import {Logo, navItems} from "~/data";
-
+import { navItems, Logo } from '~/data';
 </script>
 
 <template>
-
-  <nav
-      class="  flex justify-center md:justify-between  items-center py-4 px-12 sticky
-      top-0 z-10 bg-black/20 backdrop-blur-lg border border-gray-800 rounded-md">
-
-    <a :href=Logo[0].link
-       class="text-4xl font-bold text-primary">
-      {{ Logo[0].name }}
-    </a>
-
-    <div class="  justify-end gap-4  md:flex hidden ">
-      <Button variant="link" v-for="item in navItems"
-         :href=item.link
+  <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a
+          v-for="logo in Logo"
+          :key="logo.name"
+          :href="logo.link"
+          class="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
       >
-        {{ item.name }}
-      </Button>
-    </div>
+        {{ logo.name }}
+      </a>
 
+      <div class="hidden md:flex space-x-8">
+        <a
+            v-for="item in navItems"
+            :key="item.name"
+            :href="item.link"
+            class="hover:text-blue-400 transition-colors"
+        >
+          {{ item.name }}
+        </a>
+      </div>
+    </div>
   </nav>
 </template>

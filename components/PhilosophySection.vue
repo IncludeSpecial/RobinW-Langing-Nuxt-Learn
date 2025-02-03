@@ -1,31 +1,33 @@
-<script lang="ts" setup>
-import {PhilosophyItems} from "~/data";
+<script setup lang="ts">
+defineProps<{
+  PhilosophyTitle: string
+  Description: string
+  ImageSrc: string
+  ImageAltText: string
+}>();
 </script>
 
 <template>
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-    <div
-        class="bg-accent-foreground/10 dark:bg-gray-800 p-4 flex flex-col justify-center items-start rounded-lg shadow-md">
-      <h2 class="text-2xl text-primary dark:text-primary font-bold mb-4">
-        {{ PhilosophyItems.PhilosophyTitle }}
-      </h2>
-      <p class="text-accent-foreground/70 mb-4">
-        {{ PhilosophyItems.Description }}
-      </p>
-      <Button variant="link" class="text-blue-400 " :href="PhilosophyItems.Link">
-        <Icon name="arcticons:linkhub" class="mr-2"/>
-        {{ PhilosophyItems.LinkText }}
-      </Button>
-    </div>
+  <section class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row gap-16 items-center">
+      <div class="lg:w-1/2">
+        <nuxt-img
+            :src="ImageSrc"
+            :alt="ImageAltText"
+            class="rounded-3xl"
+            format="webp"
+            quality="80"
+        />
+      </div>
 
-    <div class="bg-accent-foreground/10 dark:bg-gray-800 flex justify-center items-center rounded-lg shadow-md">
-      <nuxt-img
-          :alt="PhilosophyItems.ImageAltText"
-          :src="PhilosophyItems.ImageSrc"
-          format="webp"
-          quality="80"
-          class="object-cover w-full h-64 md:h-96 rounded-lg"
-      />
+      <div class="lg:w-1/2 space-y-8">
+        <h2 class="text-4xl font-bold">{{ PhilosophyTitle }}</h2>
+        <p class="text-gray-400 text-lg">{{ Description }}</p>
+        <button class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+          <span>Узнать подробнее</span>
+          <Icon name="heroicons:arrow-long-right" class="w-5 h-5" />
+        </button>
+      </div>
     </div>
   </section>
 </template>

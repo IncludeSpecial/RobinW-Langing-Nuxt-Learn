@@ -1,62 +1,45 @@
-<template>
-  <div class="  text-white flex items-center justify-center rounded-lg">
-    <div class="p-8 gap-4 grid-cols-1 md:grid-cols-2 grid">
-      <div>
-        <h1 class="text-4xl font-bold mb-6">Let's get started</h1>
-        <p class="mb-6 text-gray-400">Now that you know a lot about me, let me know if you are interested to work with me.</p>
-      </div>
-
-      <form @submit.prevent="submitForm">
-        <div class="mb-4">
-          <label for="name" class="block text-sm font-medium">Name</label>
-          <input v-model="form.name" id="name" type="text"
-                 class="mt-1 block w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg" required>
-        </div>
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium">Email</label>
-          <input v-model="form.email" id="email" type="email"
-                 class="mt-1 block w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg" required>
-        </div>
-        <div class="mb-6">
-          <label for="message" class="block text-sm font-medium">Message</label>
-          <textarea v-model="form.message" id="message"
-                    class="mt-1 block w-full p-2.5 bg-gray-800 border border-gray-700 rounded-lg" required></textarea>
-        </div>
-        <Button type="submit" class="w-full py-3 bg-purple-600 rounded-lg text-white font-semibold hover:bg-purple-700">
-          LET'S GET STARTED
-        </Button>
-      </form>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        message: ''
-      }
-    };
-  },
-  methods: {
-    submitForm() {
-      console.log(
-          "Имя: " + this.form.name
-      );
-      console.log(
-          "Почта: " + this.form.email
-      );
-      console.log(
-          "Сообщение: " + this.form.message
-      );
-    }
-  }
-};
+<script setup lang="ts">
+const form = ref({
+  name: '',
+  email: '',
+  message: ''
+});
 </script>
 
-<style>
-/* Add any additional styling here */
-</style>
+<template>
+  <section class="container mx-auto px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-4">Давайте работать вместе!</h2>
+      <p class="text-gray-400 mb-12">
+        Есть проект на примете? Давайте создадим что-то удивительное.
+      </p>
+
+      <form class="space-y-6">
+        <input
+            v-model="form.name"
+            type="text"
+            placeholder="Your Name"
+            class="w-full p-4 bg-gray-900 rounded-lg border border-gray-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50"
+        >
+        <input
+            v-model="form.email"
+            type="email"
+            placeholder="Your Email"
+            class="w-full p-4 bg-gray-900 rounded-lg border border-gray-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50"
+        >
+        <textarea
+            v-model="form.message"
+            rows="5"
+            placeholder="Your Message"
+            class="w-full p-4 bg-gray-900 rounded-lg border border-gray-800 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50"
+        ></textarea>
+        <button
+            type="submit"
+            class="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-colors"
+        >
+          Отправить
+        </button>
+      </form>
+    </div>
+  </section>
+</template>

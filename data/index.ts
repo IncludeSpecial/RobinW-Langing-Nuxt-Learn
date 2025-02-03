@@ -1,212 +1,187 @@
 export const navItems = [
-
-    {name: "Experience", link: "#Experience"},
-    {name: "Work", link: "#Work"},
-    {name: "Photography", link: "#Photography"},
-    {name: "Contact", link: "#Contact"},
+    {name: "Опыт", link: "#experience"},
+    {name: "Работы", link: "#work"},
+    {name: "Фотография", link: "#photography"},
+    {name: "Контакты", link: "#contact"},
 ];
 export const Logo = [
-    {name: "W.Robin", link: "#"},
-]
+    {name: "Switty", link: "#"},
+];
 export const CardItems = [
     {
         id: "01",
         firstColor: "text-green-500",
-        firstWord: "Google, ",
-        secondWord: "Interaction Designer",
-        description: "I currently am the lead designer on the interaction design team for Google Play."
+        firstWord: "Яндекс, ",
+        secondWord: "Продуктовый дизайнер",
+        description: "Руководил командой дизайнеров в создании интерфейсов для экосистемы Яндекс"
     },
     {
         id: "02",
-
         firstColor: "text-blue-500",
-        firstWord: "Facebook, ",
-        secondWord: "Product Designer",
-        description: "I’ve worked on a wide variety of internal tools for Facebook over the past 6 years."
+        firstWord: "Сбер, ",
+        secondWord: "UX/UI Дизайнер",
+        description: "Разрабатывал дизайн-систему для мобильных приложений банка"
     },
     {
         id: "03",
         firstColor: "text-pink-500",
-        firstWord: "Instagram, ",
-        secondWord: "Graphic Designer",
-        description: "I started my design career with Dribble. I was in charge of creating illustrations for the platform."
+        firstWord: "VK, ",
+        secondWord: "Графический дизайнер",
+        description: "Создавал фирменный стиль для новых продуктов компании"
+    }
+];
 
-    }
-]
 
-export const Works =
-    {
-        WorkTitle: "Work Experience",
-        Description: "Companies I have worked for in the past",
-    }
-export const PhilosophyItems =
-    {
-        PhilosophyTitle: "Our Philosophy & Values",
-        Description: "At the core of our beliefs lie aspirations for profound connections with humanity, harmony in the metaphysical realm, and deep engagement with the universe. Our guiding principles—authenticity, creativity, and hospitality—steer us towards realizing these aspirations.",
-        Link: "#",
-        LinkText: "Learn More",
-        ImageSrc: "https://burst.shopifycdn.com/photos/dark-portrait-of-woman-with-her-eyes-closed.jpg?width=1000&format=pjpg&exif=0&iptc=0",
-        ImageAltText: "Human",
-    }
-export const InstagramItems =
-    {
-        PhilosophyTitle: "Instagram",
-        Description: "If you area a person who enjoys photography, then I highly recommend that you check out my Instagram. I’m an avid traveller and I capture the best moments that I would love to cherish with the world",
-        Link: "#",
-        LinkText: "Follow me on Instagram",
-        ImageSrc: "https://media.istockphoto.com/id/155439315/photo/passenger-airplane-flying-above-clouds-during-sunset.jpg?s=612x612&w=0&k=20&c=LJWadbs3B-jSGJBVy9s0f8gZMHi2NvWFXa3VJ2lFcL0=",
-        ImageAltText: "Human",
-    }
+export const Works = {
+    WorkTitle: "Опыт работы",
+    Description: "Компании, в которых я работал",
+};
+
+export const PhilosophyItems = {
+    PhilosophyTitle: "Философия и ценности",
+    Description: "В основе нашей работы - стремление к глубокому пониманию пользователя, гармонии функциональности и эстетики. Наши принципы: ясность, инновационность и внимание к деталям.",
+    Link: "#",
+    LinkText: "Узнать больше",
+    ImageSrc: "https://burst.shopifycdn.com/photos/dark-portrait-of-woman-with-her-eyes-closed.jpg?width=1000&format=pjpg&exif=0&iptc=0",
+    ImageAltText: "Философия работы",
+};
+
+export const InstagramItems = {
+    PhilosophyTitle: "Instagram",
+    Description: "Я активно делюсь своими работами и путешествиями в Instagram. Подписывайтесь, чтобы быть в курсе новых проектов!",
+    Link: "#",
+    LinkText: "Подписаться в Instagram",
+    ImageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR213WGOTDvKAtCUL-nM1DFe7xIH3wr_mWD0g&s",
+    ImageAltText: "Instagram превью",
+};
 
 export const HeroItems = {
-    title: "I’m Robin Williams. A Product Designer,",
-    titleSecond: "based in Italy.",
-    description: 'I’m probably the most passionate designer you will ever get to work with. If you have a great project that needs some amazing skills, I’m your guy.',
-    imageSrc: "https://i.pinimg.com/564x/dc/28/47/dc2847016e75a58c2ed97003b1d41c79.jpg",
-    imageAlt: "Human"
-}
-export const CompanyBodyItems = {
-    title: "Skillset",
-    description: "With skills in over 4 different fields of desi" +
-        "gn, I am the perfect person to hire when it comes to a full-fledged project. Whatever your needs are, I can pretty much take on any challenge.",
+    title: "Я Switty, продуктовый дизайнер,",
+    titleSecond: "базируюсь в Москве.",
+    description: 'Создаю цифровые продукты с фокусом на пользовательский опыт и визуальную эстетику. Готов к сложным и интересным проектам.',
+    imageSrc: "https://switty.ru/_vercel/image?url=%2Fswitty.jpg&w=320&q=100",
+    imageAlt: "Switty portrait"
+};
 
-}
+export const CompanyBodyItems = {
+    title: "Навыки",
+    description: "Многолетний опыт в различных областях дизайна позволяет мне решать задачи любой сложности и масштаба.",
+};
 export const CompanyItems = [
+
+    {id: "01", logo: "arcticons:yandex-start", link: "#"},
+    {id: "02", logo: "arcticons:sberbank", link: "#"},
+    {id: "03", logo: "arcticons:vk", link: "#"},
+    {id: "04", logo: "arcticons:tinkoffbiz", link: "#"},
+    {id: "05", logo: "arcticons:bulut-mailru", link: "#"},
+    {id: "06", logo: "arcticons:ozon", link: "#"},
     {
-        id: "01",
-        logo: "arcticons:epic-games",
-        link: "#",
+        id: "07", logo: "arcticons:epic-games", link: "#",
         size: "16px"
     },
     {
-        id: "02",
+        id: "08",
         logo: "arcticons:newsbreak",
         link: "#",
         size: "16px"
     }
     ,
     {
-        id: "03",
+        id: "09",
         logo: "arcticons:steam",
         link: "#",
         size: "16px"
     }
     ,
     {
-        id: "04",
+        id: "10",
         logo: "arcticons:funmax",
         link: "#",
         size: "16px"
     },
     {
-        id: "05",
+        id: "11",
         logo: "arcticons:x-twitter",
         link: "#",
         size: "16px"
     },
     {
-        id: "06",
+        id: "12",
         logo: "arcticons:twitch",
         link: "#",
         size: "16px"
     },
     {
-        id: "07",
+        id: "13",
         logo: "arcticons:arena-breakout",
         link: "#",
         size: "16px"
     },
     {
-        id: "08",
+        id: "14",
         logo: "arcticons:amd-link",
         link: "#",
         size: "16px"
     },
     {
-        id: "09",
+        id: "15",
         logo: "arcticons:whatsapp",
         link: "#",
         size: "16px"
     }
-]
+];
+
 
 export const SkillsetItems = [
     {
         Icon: "mdi:view-dashboard",
-        Skill: "Product Design",
-        Description: "Working at Facebook has taught me a lot about how to understand users, solve problems and build great products.",
+        Skill: "Продуктовый дизайн",
+        Description: "Создание цифровых продуктов от идеи до реализации",
     }, {
         Icon: "mdi:pen",
-        Skill: "Visual Design",
-        Description: "My experience at dribbble has helped me learn to develop the eye for design. Colors, typography, layout and the whole package.",
+        Skill: "UX исследование",
+        Description: "Проведение пользовательских исследований и тестирований",
     }, {
         Icon: "mdi:motion-play",
-        Skill: "Motion Design",
-        Description: "I started my design journey with motion design in my college days. Motion is something that really fascinates me because of the flexibility of story telling. ",
+        Skill: "Анимация интерфейсов",
+        Description: "Проработка микровзаимодействий и переходов",
     }, {
         Icon: "mdi:play",
-        Skill: "Photography",
-        Description: "Clicking pictures really brings out the creative in me. Phtography really makes you look and percieve things in a different way.",
+        Skill: "Прототипирование",
+        Description: "Создание интерактивных прототипов высокой точности",
     },
-]
+];
 
 export const ProjectsItems = [
     {
         id: 1,
-        imgSrc: 'https://media.istockphoto.com/photos/modern-tech-for-a-modern-workplace-picture-id824197440?b=1&k=20&m=824197440&s=170667a&w=0&h=1Z2fi7fYvmd17dBz9cEBGwHYecq_XCGquRyHls--8xc=',
-        imgAlt: 'Restaurant Website Design',
-        title: 'Restaurant Website Design',
-        description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
+        imgSrc: 'https://www.addevice.io/storage/ckeditor/uploads/images/65f840d316353_mobile.app.development.1920.1080.png',
+        imgAlt: 'Мобильное приложение',
+        title: 'Банковское приложение',
+        description: 'Полный редизайн мобильного приложения для крупного банка'
     },
     {
         id: 2,
-        imgSrc: 'https://www.zdnet.com/a/img/resize/e9794c8e2b8a9a9173f0b1f496406d551f6e80b5/2023/08/22/8c939452-01fe-4087-a469-c902c577f0a1/asus-zenfone-10-in-hand.jpg?auto=webp&fit=crop&height=900&width=1200',
-        imgAlt: 'Restaurant Website Design',
-        title: 'Restaurant Website Design',
-        description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
+        imgSrc: 'https://static.tildacdn.com/tild6338-6236-4665-a461-316365366438/image13.png',
+        imgAlt: 'Корпоративный портал',
+        title: 'Корпоративная платформа',
+        description: 'Разработка дизайн-системы для внутренних сервисов компании'
     },
-    {
-        id: 3,
-        imgSrc: 'https://cdn.prod.website-files.com/5e0a5d9d743608d0f3ea6753/64070707e3e10633530f0a08_daily.dev%20feed%20-%20mobile.webp',
-        imgAlt: 'Restaurant Website Design',
-        title: 'Restaurant Website Design',
-        description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
-    },
-    {
-        id: 4,
-        imgSrc: 'https://designmodo.com/wp-content/uploads/2018/08/1-Modern-Branding-Identity-Mockup-Vol.2.jpg',
-        imgAlt: 'Restaurant Website Design',
-        title: 'Restaurant Website Design',
-        description: 'I worked with the guys at CBRE to redesign their entire website and mobile app for both Android and iOS. This project lasted for 4 months and was a very challenging one.'
-    }
 ];
 export const TestimonialItems = [
     {
-        ImageSrc: "https://i.pinimg.com/originals/e7/4b/b5/e74bb5c8efaa066cc9db6f6d82d22634.jpg",
-        ImageAltText: "Image description",
-        Testimonial: "Robin is one of the best designers I have worked with in my entire life. He is a designer who is very capable of taking up complex projects and delivers impeccable design.",
-        AuthorName: "Richard Owens",
-        AuthorTitle: "CEO, Company 1",
+        ImageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5scYrQAhxrDZ4ZiKR2__BXklh_hDAmYzWQ&s",
+        ImageAltText: "Андрей Смирнов",
+        Testimonial: "Switty проявил себя как настоящий профессионал. Его работы всегда отличаются глубиной проработки и вниманием к деталям.",
+        AuthorName: "Андрей Смирнов",
+        AuthorTitle: "CEO, Digital Agency",
     },
-    {
-        ImageSrc: "https://i.pinimg.com/originals/e7/4b/b5/e74bb5c8efaa066cc9db6f6d82d22634.jpg",
-        ImageAltText: "Image description",
-        Testimonial: "Robin is one of the best designers I have worked with in my entire life. He is a designer who is very capable of taking up complex projects and delivers impeccable design.",
-        AuthorName: "Richard Owens",
-        AuthorTitle: "CEO, Company 1",
-    }, {
-        ImageSrc: "https://i.pinimg.com/originals/e7/4b/b5/e74bb5c8efaa066cc9db6f6d82d22634.jpg",
-        ImageAltText: "Image description",
-        Testimonial: "Robin is one of the best designers I have worked with in my entire life. He is a designer who is very capable of taking up complex projects and delivers impeccable design.",
-        AuthorName: "Richard Owens",
-        AuthorTitle: "CEO, Company 1",
-    },
-]
+];
 
 
 export const CityItems = [
     {
-        city: "Italy",
+        city: "Италия",
         images: [
             {
                 src: "https://img.freepik.com/free-photo/vertical-picture-gondolas-grand-channel-colorful-buildings-venice-italy_181624-28984.jpg?t=st=1722428812~exp=1722432412~hmac=8f6ce3184b525190730e99877b69e41ca4d7ae45a302824310a1c79649e87d11&w=740",
@@ -234,7 +209,7 @@ export const CityItems = [
         ]
     },
     {
-        city: "Australia",
+        city: "Австралия",
         images: [
             {
                 src: "https://www.shutterstock.com/image-photo/sydney-cityscape-image-australia-harbour-600nw-589390340.jpg",
@@ -262,7 +237,7 @@ export const CityItems = [
         ]
     },
     {
-        city: "India",
+        city: "Индия",
         images: [
             {
                 src: "https://www.authenticindiatours.com/app/uploads/2022/05/10-Customs-and-Traditions-in-Indian-Culture-Jaisalmer-Desert-Festival.jpeg",
@@ -290,7 +265,7 @@ export const CityItems = [
         ]
     },
     {
-        city: "Brazil",
+        city: "Бразилия",
         images: [
             {
                 src: "https://media.telefonicatech.com/telefonicatech/uploads/2021/1/450_brazilian-cities-urban-planning.jpg",
@@ -310,9 +285,6 @@ export const CityItems = [
                 alt: "Brazil",
             }, {
                 src: "https://www.aworldtotravel.com/wp-content/uploads/2019/01/sao-paulo-1-heres-how-to-road-trip-5-brazilian-cities-in-two-weeks-a-world-to-travel-1.jpg",
-                alt: "Brazil",
-            }, {
-                src: "https://goway-cms-files.s3.ca-central-1.amazonaws.com/production/wordpress_images/Sunset-view-of-Belo-Horizonte-Brazil-_631522190.jpg",
                 alt: "Brazil",
             },
         ]

@@ -1,32 +1,28 @@
 <script setup lang="ts">
-import { CompanyItems } from "~/data";
-import { onMounted } from 'vue';
-
-onMounted(() => {
-  const scrollContainer = document.querySelector('.scroll-container');
-  if (scrollContainer) {
-    scrollContainer.addEventListener('wheel', (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        scrollContainer.scrollLeft += e.deltaY;
-      }
-    });
-  }
-});
+defineProps<{
+  items: Array<{
+    logo: string
+    link: string
+  }>
+}>();
 </script>
 
 <template>
-  <div class="scroll-container no-scrollbar overflow-hidden touch-manipulation overflow-x-auto overflow-y-hidden whitespace-nowrap border-gray-500 border rounded-lg">
-    <div class="flex">
-      <div
-          v-for="item in CompanyItems"
-          :key="item.id"
-          class="flex justify-center items-center p-4 border border-gray-500 min-w-72 h-36"
-      >
-        <a :href="item.link" class="item-link">
-          <Icon :name="item.logo" size="64px" />
+  <section class="container mx-auto px-4">
+    <div class="border-t border-gray-800 py-16">
+      <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-8">
+        <a
+            v-for="(item, index) in items"
+            :key="index"
+            :href="item.link"
+            class="flex items-center justify-center grayscale hover:grayscale-0 transition-all"
+        >
+          <Icon
+              :name="item.logo"
+              class="w-12 h-12 text-gray-400 hover:text-white transition-colors"
+          />
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </template>

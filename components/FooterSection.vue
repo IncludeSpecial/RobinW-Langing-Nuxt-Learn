@@ -1,40 +1,38 @@
 <script setup lang="ts">
-
+import { navItems, Logo } from '~/data';
 </script>
 
 <template>
-  <div class="  bottom-0 right-0  bg-primary-foreground grid-cols-1 md:grid-cols-2 grid w-full p-4 gap-8 ">
-    <div class="gap-4 flex items-start flex-col justify-center ">
-      <a href="#" class="text-4xl font-extrabold ">Robin.W</a>
-      <div class="flex items-center justify-start gap-4">
-        <a href="#">
-          <Icon size="36px" name="arcticons:x-twitter"/>
-        </a>
-        <a href="#">
-          <Icon size="36px" name="arcticons:basketball"/>
-        </a>
-        <a href="#">
-          <Icon size="36px" name="arcticons:linkedin"/>
-        </a>
+  <footer class="border-t border-gray-800 mt-32">
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-4 gap-12">
+        <div>
+          <a
+              v-for="logo in Logo"
+              :key="logo.name"
+              :href="logo.link"
+              class="text-2xl font-bold text-white mb-4 block"
+          >
+            {{ logo.name }}
+          </a>
+          <p class="text-gray-400">Digital Designer & Photographer</p>
+        </div>
 
+        <div v-for="(col, index) in 3" :key="index">
+          <h4 class="text-white font-semibold mb-4">Column {{ index + 1 }}</h4>
+          <ul class="space-y-2">
+            <li v-for="item in navItems" :key="item.name">
+              <a :href="item.link" class="text-gray-400 hover:text-blue-400 transition-colors">
+                {{ item.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 Switty. (Был взят макет тут все не правда) Я его просто сверстал</p>
       </div>
     </div>
-    <div class="grid-cols-1 md:grid-cols-2 grid items-center justify-start gap-4">
-      <a href="#" class="p-4">Home</a>
-      <a href="#" class="p-4">About</a>
-      <a href="#" class="p-4">Work</a>
-      <a href="#" class="p-4">Process</a>
-      <a href="#" class="p-4">Store</a>
-      <a href="#" class="p-4">Blog</a>
-      <a href="#" class="p-4">Reading List</a>
-
-    </div>
-    <div>
-      &copy; Copyright 2023 • Robin Williams. Webflow cloneable
-    </div>
-  </div>
+  </footer>
 </template>
-
-<style scoped>
-
-</style>

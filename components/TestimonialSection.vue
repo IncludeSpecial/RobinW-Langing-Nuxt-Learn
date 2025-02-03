@@ -1,45 +1,37 @@
 <script setup lang="ts">
-import {TestimonialItems} from "~/data";
+defineProps<{
+  items: Array<{
+    Testimonial: string
+    AuthorName: string
+    AuthorTitle: string
+    ImageSrc: string
+  }>
+}>();
 </script>
 
 <template>
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-4  text-white">
-    <!-- Left Column: Text Section -->
-    <div class="flex flex-col justify-start lg:pr-16">
-      <h2 class="lg:text-4xl text-xl font-bold mb-4">This is what people say about me</h2>
-      <p class="text-gray-400 mb-8">
-        Here are a few lines from people who I have worked with over the past 8+ years in my design career.
-      </p>
-      <Button href="#" class="text-blue-500 hover:underline">
-        See all testimonials
-      </Button>
-    </div>
-    <div class="lg:gap-24 gap-4 flex flex-col justify-between ">
-      <!-- Right Column: Testimonial Section -->
-      <div v-for="item in TestimonialItems" class="space-y-8">
-        <div class="flex flex-col   rounded-lg border list-inside border-gray-300">
-<!--          :src="item.ImageSrc"    -->
+  <section class="container mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div
+          v-for="(item, index) in items"
+          :key="index"
+          class="p-8 rounded-2xl bg-gray-900 border border-gray-800"
+      >
+        <p class="text-gray-400 mb-6">"{{ item.Testimonial }}"</p>
+        <div class="flex items-center gap-4">
           <nuxt-img
               :src="item.ImageSrc"
-              :alt="item.ImageAltText"
-              format="webp"
-              quality="80"
-              loading="lazy"
-              class="object-cover  rounded-t-lg w-full h-48 md:h-64 lg:h-96 "
+              alt="Author"
+              class="w-12 h-12 rounded-full object-cover"
+              width="48"
+              height="48"
           />
-          <div class="gap-8 p-12 justify-between flex flex-col">
-            <p class="lg:text-2xl text-sm font-semibold ">
-              “{{ item.Testimonial }}”
-            </p>
-            <div>
-              <p class="text-gray-500 text-xl font-bold">{{ item.AuthorName }}</p>
-              <p class="text-gray-400">{{ item.AuthorTitle }}</p>
-            </div>
-
+          <div>
+            <h4 class="font-semibold">{{ item.AuthorName }}</h4>
+            <p class="text-sm text-gray-500">{{ item.AuthorTitle }}</p>
           </div>
         </div>
       </div>
     </div>
-
   </section>
 </template>

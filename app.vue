@@ -1,9 +1,9 @@
 <template>
-  <div class=" dark bg-primary-foreground text-primary scroll-smooth focus:scroll-auto ">
-    <NuxtPage />
+  <div class="min-h-screen bg-black text-gray-300 font-sans antialiased">
+    <NavBarSection />
+    <main class="pt-20">
+      <NuxtPage />
+    </main>
+    <FooterSection />
   </div>
 </template>
-
-<style>
-
-</style>

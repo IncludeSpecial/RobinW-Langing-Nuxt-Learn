@@ -1,39 +1,30 @@
-<template class="">
+<script setup lang="ts">
+import {
+  HeroItems,
+  Works,
+  CardItems,
+  PhilosophyItems,
+  SkillsetItems,
+  CompanyItems,
+  ProjectsItems,
+  InstagramItems,
+  TestimonialItems,
+  CityItems
+} from '~/data';
+import TestimonialSection from "~/components/TestimonialSection.vue";
+</script>
 
-  <div class="   bg-black flex flex-col  relative z-10 mx-auto text-primary gap-4" >
-
-    <NavBarSection/>
-    <div class="container flex flex-col gap-4">
-      <HeroSection/>
-      <WorkSection/>
-      <PhilosophySection/>
-      <SkillsetSection/>
-      <CompanySection/>
-      <ProjectsSection/>
-      <InstagramSection/>
-      <Testimonial/>
-      <PhotographySection/>
-      <ContactSection/>
-    </div>
-
-    <FooterSection/>
-
+<template>
+  <div class="space-y-32 pb-32">
+    <HeroSection v-bind="HeroItems" />
+    <WorkSection v-bind="Works" :items="CardItems" />
+    <PhilosophySection v-bind="PhilosophyItems" />
+    <SkillsetSection :items="SkillsetItems" />
+    <CompanySection :items="CompanyItems" />
+    <ProjectsSection :items="ProjectsItems" />
+    <InstagramSection v-bind="InstagramItems" />
+    <TestimonialSection :items="TestimonialItems" />
+    <PhotographySection :cities="CityItems" />
+    <ContactSection />
   </div>
 </template>
-
-<style scoped>
-
-
-</style>
-
-<script setup lang="ts">
-
-import FooterSection from "~/components/FooterSection.vue";
-
-useSeoMeta({
-      title: "Switty | Портфолио",
-      description: "Добро пожаловать в портфолио Switty, где представлены мои лучшие проекты и достижения.",
-    }
-)
-
-</script>
